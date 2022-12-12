@@ -1,10 +1,10 @@
 const User = require("../models/User")
 const {
   verifyTokenAndAdmin,
-  verifyTokenAndCandidate,
   verifyTokenAndAuthorization,
 } = require("../middlewares/verifyToken")
 const Jobs = require("../models/Jobs")
+const Location = require("../models/Location")
 
 const router = require("express").Router()
 
@@ -68,7 +68,7 @@ router.put("/approve", verifyTokenAndAdmin, async (req, res) => {
 })
 
 // apply
-router.put("/:id/apply", verifyTokenAndCandidate, async (req, res) => {
+router.put("/:id/apply", verifyTokenAndAuthorization, async (req, res) => {
   console.log(req.url)
   try {
     const appliedJob = await Jobs.findByIdAndUpdate(req.params.id, {

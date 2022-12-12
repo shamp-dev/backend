@@ -12,7 +12,10 @@ const port = process.env.PORT ? process.env.PORT : 8080
 mongoose.set("strictQuery", false)
 
 mongoose
-  .connect(process.env.DB_URL)
+  .connect(process.env.DB_URL, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
   .then(() => {
     console.log("DB Connection successfull!")
   })

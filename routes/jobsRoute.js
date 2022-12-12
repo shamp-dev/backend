@@ -58,10 +58,10 @@ router.delete(
 )
 
 // single job
-router.get("/:id", async (req, res) => {
+router.get("/:slug", async (req, res) => {
   console.log(req.url)
   try {
-    const job = await Job.findById(req.params.id)
+    const job = await Job.findOne({ slug: req.params.slug })
     res.status(200).json(job)
   } catch (err) {
     res.status(500).json(err)
@@ -72,23 +72,8 @@ router.get("/:id", async (req, res) => {
 router.get("/", async (req, res) => {
   console.log(req.url)
 
-  const qNew = req.query.new
-
   try {
-    let job
-
-    if (qNew) {
-      job = await Job.find().sort({ createdAt: -1 }).limit(5)
-    } else if (Location) {
-      job = await Job.find({
-        location: {
-          $in: [Location],
-        },
-      })
-    } else {
-      job = await Job.find()
-    }
-
+    const job = await Job.find()
     res.status(200).json(job)
   } catch (err) {
     res.status(500).json(err)
