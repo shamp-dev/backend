@@ -1,9 +1,10 @@
 {
   "name": "backend",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "jobly backend server",
   "main": "server.js",
+  "homepage": "/",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"

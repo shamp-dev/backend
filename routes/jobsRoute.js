@@ -11,7 +11,6 @@ router.post(
   "/",
   verifyTokenAndEmployer || verifyTokenAndAdmin,
   async (req, res) => {
-    console.log(req.url)
     const newJob = new Job(req.body)
 
     try {
@@ -28,7 +27,6 @@ router.put(
   "/:id",
   verifyTokenAndEmployer || verifyTokenAndAdmin,
   async (req, res) => {
-    console.log(req.url)
     try {
       const updatedJob = await Job.findByIdAndUpdate(
         req.params.id,
@@ -47,7 +45,6 @@ router.delete(
   "/:id",
   verifyTokenAndEmployer || verifyTokenAndAdmin,
   async (req, res) => {
-    console.log(req.url)
     try {
       await Job.findByIdAndDelete(req.params.id)
       res.status(200).json("Job has been deleted")
@@ -59,7 +56,6 @@ router.delete(
 
 // single job
 router.get("/:slug", async (req, res) => {
-  console.log(req.url)
   try {
     const job = await Job.findOne({ slug: req.params.slug })
     res.status(200).json(job)
@@ -70,8 +66,6 @@ router.get("/:slug", async (req, res) => {
 
 // job listings
 router.get("/", async (req, res) => {
-  console.log(req.url)
-
   try {
     const job = await Job.find()
     res.status(200).json(job)

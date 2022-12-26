@@ -38,7 +38,6 @@ app.use("/api/jobs", jobsRoute)
 app.use("/api/auth", userAuth)
 app.use("/api/users", userData)
 
-app.listen(
-  port,
-  console.info(`backend server is running on http://localhost:${port}`),
-)
+app.listen(port, () => {
+  console.info(`backend server is running on http://localhost:${port}`)
+})
