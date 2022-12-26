@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require("cors")
 require("dotenv").config()
 
 const jobsRoute = require("./routes/jobsRoute")
@@ -24,14 +25,20 @@ mongoose
   })
 
 app.use(express.json())
+app.use(cors())
 app.get("/", (req, res) => {
   const url = req.url
   console.log(url)
 
-  res.json(`Hello Admin! Welcome to the server at port ${port + " " + url}`)
+  res.json(
+    `Hello Admin! Welcome to the server - http://localhost:${port + url} - `,
+  )
 })
 app.use("/api/jobs", jobsRoute)
 app.use("/api/auth", userAuth)
 app.use("/api/users", userData)
 
-app.listen(port, console.info(`backend server is running on ${port}`))
+app.listen(
+  port,
+  console.info(`backend server is running on http://localhost:${port}`),
+)
