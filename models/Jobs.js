@@ -9,8 +9,8 @@ const JobsSchema = new mongoose.Schema(
     designation: { type: String, required: true },
     salary: { type: Number, required: true },
     location: { type: String, required: true },
-    applied: { type: Boolean },
-    approved: { type: Boolean },
+    applied: { type: Boolean, default: false },
+    approved: { type: Boolean, default: false },
   },
   { timestamps: true },
 )

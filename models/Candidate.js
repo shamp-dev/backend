@@ -8,7 +8,7 @@ const CandidateSchema = new mongoose.Schema(
     interviewed: { type: Boolean, default: false },
     selected: { type: Boolean, default: false },
   },
-  { timestamps: true, _id },
+  { timestamps: true, _id: true },
 )
 
 module.exports = mongoose.model("Candidate", CandidateSchema)

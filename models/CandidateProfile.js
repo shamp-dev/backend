@@ -14,11 +14,11 @@ const CandidateProfileSchema = new mongoose.Schema(
     projects: { type: Array },
     certificates: { type: Array },
     hobbies: { type: String },
-    award: { tyoe: Array },
+    award: { type: Array },
     language: { type: Array },
     jobSeeker: { type: Boolean, default: true },
   },
-  { timestamps: true },
+  { timestamps: true, _id: true },
 )
 
 module.exports = mongoose.model("CandidateProfile", CandidateProfileSchema)

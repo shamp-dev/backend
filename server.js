@@ -8,7 +8,7 @@ const userAuth = require("./routes/userAuth")
 const userData = require("./routes/userData")
 
 const app = express()
-const port = process.env.PORT ? process.env.PORT : 8080
+const port = process.env.PORT ? process.env.PORT : 1000
 
 mongoose.set("strictQuery", false)
 
