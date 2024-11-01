@@ -1,19 +1,12 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const cors = require("cors")
-require("dotenv").config()
+import express from "express"
 
 const app = express()
-const port = process.env.PORT ? process.env.PORT : 1000
+const port = 9145
 
-app.use(express.json())
-app.use(cors())
+app.use(express.static("public"))
 
 app.get("/", (req, res) => {
-  const url = req.url
-  console.log(url)
-
-  res.json("welcome to the backend")
+  res.sendFile("/index.html")
 })
 
-app.listen(port, () => console.info(`backend: http://localhost:${port}`))
+app.listen(port, () => console.log(port))
